@@ -18,7 +18,7 @@ function preload(){
 
 function setup(){
   createCanvas(windowWidth,windowHeight);
-  zombie = createSprite(300,60,40,50)
+  zombie = createSprite(width/2,60,40,50)
  
   zombie.addImage(zombieImg);
   zombie.scale = 0.4
@@ -33,22 +33,23 @@ function draw(){
   background(backgroundImg)
   if(gameState === PLAY){
     textSize(15)
-    text("SCORE = "+ score,400,20)
+    fill("White")
+    text("SCORE = "+ score,width-100,20)
     if(peopleGroup.isTouching(zombie)){
       score = score + 1000; 
       peopleGroup.destroyEach();
     }
     if(keyDown("up_Arrow")){
-    zombie.y = zombie.y -2
+    zombie.y = zombie.y -4
   }
   if(keyDown("down_Arrow")){
-    zombie.y = zombie.y +2
+    zombie.y = zombie.y +4
   }
   if(keyDown("left_Arrow")){
-    zombie.x = zombie.x -2
+    zombie.x = zombie.x -4
   }
   if(keyDown("right_Arrow")){
-    zombie.x = zombie.x +2
+    zombie.x = zombie.x +4
   }
   randasteroid();
   peoplerand();
@@ -73,7 +74,7 @@ function randasteroid(){
   if(frameCount%100 === 0){
     var rand1 = Math.round(random(1,2));
     if(rand1 === 1){
-      asteroid = createSprite(600,Math.round(random(50,450)))
+      asteroid = createSprite(width,Math.round(random(50,450)))
       asteroid.addImage(asteroidImg)
       asteroid.scale = 0.2;
       asteroid.velocityX = -5;
@@ -94,7 +95,7 @@ function randasteroid(){
 }
 function peoplerand(){
   if(frameCount%150 === 0){
-   people = createSprite(Math.round(random(50,450)),Math.round(random(50,450)))
+   people = createSprite(Math.round(random(50,width-50)),Math.round(random(50,height-50)))
     people.addImage(peopleImg);
     people.scale = 0.3
     people.lifetime = 100;
