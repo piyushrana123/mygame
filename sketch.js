@@ -17,7 +17,7 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(600,500)
+  createCanvas(windowWidth,windowHeight);
   zombie = createSprite(300,60,40,50)
  
   zombie.addImage(zombieImg);
